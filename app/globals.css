@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Terminal UI Theme - Dark Cyan Aesthetic */
+:root {
+  /* Background Colors */
+  --background: #080808;
+  --surface: #101010;
+  --surface-alt: #1a1a1a;
+
+  /* Text Colors */
+  --foreground: #e0e0e0;
+  --text-secondary: #888888;
+  --text-tertiary: #444444;
+
+  /* Accent Colors — monochrome */
+  --accent-cyan: #ffffff;
+  --accent-lime: #cccccc;
+  --accent-magenta: #aaaaaa;
+  --accent-orange: #bbbbbb;
+
+  /* Status Colors — grayscale */
+  --status-success: #aaaaaa;
+  --status-warning: #777777;
+  --status-error: #ffffff;
+  --status-info: #bbbbbb;
+
+  /* Legacy CSS variables for compatibility */
+  --card: #0f1429;
+  --card-foreground: #e0e6ff;
+  --popover: #0f1429;
+  --popover-foreground: #e0e6ff;
+  --primary: #00d4ff;
+  --primary-foreground: #0a0e27;
+  --secondary: #39ff14;
+  --secondary-foreground: #0a0e27;
+  --muted: #151b3f;
+  --muted-foreground: #718096;
+  --accent: #00d4ff;
+  --accent-foreground: #0a0e27;
+  --destructive: #ef4444;
+  --destructive-foreground: #fecaca;
+  --border: #718096;
+  --input: #0f1429;
+  --ring: #00d4ff;
+  --chart-1: #00d4ff;
+  --chart-2: #39ff14;
+  --chart-3: #ff6b35;
+  --chart-4: #10b981;
+  --chart-5: #3b82f6;
+  --radius: 0.375rem;
+  --sidebar: #0f1429;
+  --sidebar-foreground: #e0e6ff;
+  --sidebar-primary: #00d4ff;
+  --sidebar-primary-foreground: #0a0e27;
+  --sidebar-accent: #39ff14;
+  --sidebar-accent-foreground: #0a0e27;
+  --sidebar-border: #718096;
+  --sidebar-ring: #00d4ff;
+}
+
+.dark {
+  --background: #0a0e27;
+  --surface: #0f1429;
+  --surface-alt: #151b3f;
+  --foreground: #e0e6ff;
+  --card: #0f1429;
+  --card-foreground: #e0e6ff;
+  --popover: #0f1429;
+  --popover-foreground: #e0e6ff;
+  --primary: #00d4ff;
+  --primary-foreground: #0a0e27;
+  --secondary: #39ff14;
+  --secondary-foreground: #0a0e27;
+  --muted: #151b3f;
+  --muted-foreground: #718096;
+  --accent: #00d4ff;
+  --accent-foreground: #0a0e27;
+  --destructive: #ef4444;
+  --destructive-foreground: #fecaca;
+  --border: #718096;
+  --input: #0f1429;
+  --ring: #00d4ff;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    /* Smooth scrolling for terminal feel */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--foreground);
+    background-color: #080808;
+    overflow: hidden;
+  }
+
+  /* Terminal-specific scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-cyan);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-lime);
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: var(--accent-cyan);
+    color: var(--background);
+  }
+
+  /* Input styling */
+  input,
+  select,
+  textarea {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: inherit;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--accent-cyan);
+  }
+
+  /* Button styling */
+  button {
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  }
+
+  /* Terminal text effects */
+  .text-glow {
+    text-shadow: 0 0 8px currentColor;
+  }
+
+  .text-glow-cyan {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 8px var(--accent-cyan);
+  }
+
+  .text-glow-lime {
+    color: var(--accent-lime);
+    text-shadow: 0 0 8px var(--accent-lime);
+  }
+
+  /* Smooth animations */
+  .transition-smooth {
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-smooth-fast {
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
